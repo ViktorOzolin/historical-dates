@@ -1,0 +1,39 @@
+@import '../../styles/vars';
+@import '../../styles/media';
+
+.period {
+  display: flex;
+  font-weight: 700;
+  font-size: 56px;
+  justify-content: center;
+  width: 100%;
+
+  gap: 30px;
+
+  &__start {
+    color: $blue;
+
+    @media (min-width: $md_device) {
+      color: $purple;
+    }
+  }
+
+  &__end {
+    color: $magenta;
+  }
+
+  @media (min-width: $sm_device) {
+    font-size: 70px;
+    gap: 60px;
+  }
+  @media (min-width: $md_device) {
+    font-size: 100px;
+    position: absolute;
+    padding: 57px 0;
+  }
+  @media (min-width: $lg_device) {
+    font-size: 200px;
+  }
+
+}
+

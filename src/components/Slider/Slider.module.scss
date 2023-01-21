@@ -1,0 +1,90 @@
+@import '../../styles/vars';
+@import '../../styles/media';
+
+.styledSwiper {
+  height: 100%;
+
+
+  &_slide {
+    margin: 0 0 20px 0;
+  }
+  &_title {
+    color: $blue;
+    font-size: 16px;
+    font-family: 'Bebas Neue', cursive;
+
+    @media (min-width: $md_device) {
+      font-size: 25px;
+    }
+    @media (min-width: $lg_device) {
+      font-size: 20px;
+    }
+    @media (min-width: $md_device) and (max-height: $sm_device) {
+      font-size: 20px;
+    }
+  }
+
+  &_text {
+    font-size: 14px;
+    line-height: 145%;
+    color: $dark;
+
+    @media (min-width: $md_device) {
+      font-size: 16px;
+      line-height: 25px;
+    }
+    @media (min-width: $lg_device) {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    @media (min-width: $lg_device) and (max-height: 800px) {
+      font-size: 18px;
+      line-height: 25px;
+    }
+    @media (min-width: $md_device) and (max-height: $sm_device) {
+      font-size: 15px;
+      line-height: 25px;
+    }
+  }
+}
+
+.wrapper {
+  z-index: 0;
+  position: relative;
+  border-top: 1px solid #C7CDD9;
+  padding-top: 20px;
+
+  button {
+    position: absolute;
+    top: 40%;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (min-width: $sm_device) {
+    margin-bottom: 20px;
+  }
+  @media (min-width: $md_device) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 80px;
+    margin-bottom: 50px;
+    border: none;
+    min-height: auto;
+  }
+  @media (min-width: $lg_device) {
+
+  }
+  @media screen and (max-height: 800px) {
+    margin-bottom: 20px;
+  }
+  @media (max-height: $sm_device ) {
+    min-height: 250px;
+  }
+  @media (max-height: $sm_device) {
+    min-height: 180px;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../styles/vars';
+@import '../../styles/media';
+
+.button {
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $light;
+  border: 1px solid $gray;
+
+  &_primary {
+    box-shadow: 0px 0px 15px rgba(56, 119, 238, 0.1);
+    border: none;
+    background-color: white;
+
+    > svg > path {
+      stroke: $blue;
+    }
+  }
+
+  &_disabled {
+    opacity: 0.5;
+  }
+}
