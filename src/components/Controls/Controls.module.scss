@@ -1,0 +1,54 @@
+@import '../../styles/vars';
+@import '../../styles/media';
+
+.controls {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  max-width: 300px;
+  flex-direction: column;
+  left: 40px;
+  bottom: 20px;
+  gap: 10px;
+
+
+  @media (min-width: $md_device) {
+    top: 70%;
+    gap: 20px;
+    bottom: auto;
+  }
+  @media  (min-width: $lg_device) and (max-height: 1080px){
+    top: 60%;
+    bottom: auto;
+  }
+  @media (min-width: $md_device) and (max-height: $sm_device) {
+    
+  }
+}
+
+.btn_group {
+  display: flex;
+  gap: 20px;
+
+  @media (max-width: $md_device) {
+    gap: 10px;
+
+    > button {
+      width: 25px;
+      height: 25px;
+    }
+    > button > svg {
+      width: 6px;
+      height: 6px;
+    }
+  }
+}
+
+.counter {
+  color: $dark;
+  font-size: 14px;
+
+  @media (min-width: $md_device) {
+
+  }
+}

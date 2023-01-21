@@ -1,0 +1,179 @@
+@import '../../styles/vars';
+@import '../../styles/media';
+$circleWidth: 530px;
+$circleHeight: 530px;
+$circleMd: $circleHeight * 0.8;
+$circleSm: $circleMd * 0.8;
+
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: $md_device) {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $dark20;
+  border-radius: 50%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transform: rotate(120deg);
+  display: none;
+
+  @media (min-width: $sm_device) {
+    max-width: $circleSm;
+    max-height: $circleSm;
+  }
+  @media (min-width: $md_device) {
+    display: flex;
+    max-width: $circleMd;
+    max-height: $circleMd;
+  }
+  @media (min-width: $lg_device) {
+    max-width: $circleWidth;
+    max-height: $circleHeight;
+  }
+
+  @media (min-width: $lg_device) and (max-height: 880px) {
+    height: $circleSm;
+    width: $circleSm;
+  }
+  @media (max-width: $lg_device) and (max-height: 700px) {
+    display: none;
+  }
+  //@media screen and (max-height: $sm_device) {
+  //    height: $circleSm;
+  //    width: $circleSm;
+  //}
+
+}
+
+.point {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  transform-origin: center;
+  width: 56px;
+  height: 56px;
+  transform: rotate(-120deg);
+
+  > div {
+    border: 1px solid rgba(48, 62, 88, 0.5);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: $dark;
+    transition: all .6s;
+    transform: scale(0.1);
+    background-color: $dark;
+  }
+
+  > span {
+    position: absolute;
+    z-index: 2;
+    left: 64px;
+    font-size: 20px;
+    color: $dark;
+    font-weight: 700;
+    margin-left: 20px;
+    opacity: 0;
+    transition: .6s;
+    transform: scale(0.04);
+    transform-origin: left;
+  }
+
+  &_active {
+
+    > div {
+      transform: scale(1);
+      background-color: $light;
+    }
+    > span {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:nth-child(1) {
+    left: -28px;
+  }
+
+  &:nth-child(2) {
+    top: -0.3%;
+    left: 19%;
+
+    @media (min-width: $lg_device) {
+      top: 1.7%;
+    }
+    @media screen and (max-height: 880px) {
+      top: -3%;
+    }
+  }
+
+  &:nth-child(3) {
+    top: -0.3%;
+    right: 19%;
+
+    @media (min-width: $lg_device) {
+      top: 1.7%;
+    }
+    @media screen and (max-height: 880px) {
+      top: -3%;
+    }
+  }
+
+  &:nth-child(4) {
+    right: -29px;
+  }
+
+  &:nth-child(5) {
+    bottom: -0.3%;
+    right: 19%;
+
+    @media (min-width: $lg_device) {
+      bottom: 1.7%;
+    }
+    @media screen and (max-height: 880px) {
+      bottom: -3%;
+    }
+  }
+
+  &:nth-child(6) {
+    bottom: -0.3%;
+    left: 19%;
+
+    @media (min-width: $lg_device) {
+      bottom: 1.7%;
+    }
+    @media screen and (max-height: 880px) {
+      bottom: -3%;
+    }
+  }
+}
+
+.point:hover {
+  > div {
+    transform: scale(1);
+    background-color: $light;
+  }
+  //> span {
+  //  opacity: 1;
+  //  transform: scale(1);
+  //}
+}

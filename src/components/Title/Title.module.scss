@@ -1,0 +1,40 @@
+@import '../../styles/vars';
+@import '../../styles/media';
+
+.wrapper {
+  border: none;
+  max-width: 123px;
+  margin-top: 59px;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: $md_device) {
+    top: 0;
+    left: 0;
+    border-width: 5px;
+    border-style: solid;
+    padding-left: 78px;
+    height: 120px;
+    position: absolute;
+    border-image: linear-gradient(to bottom, $purple, $magenta) 0 0 0 1;
+  }
+  @media (max-width: $md_device) and (max-height: $sm_device) {
+    margin-top: 0;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $dark;
+  margin: 0;
+  padding: 0;
+  line-height: 120%;
+
+  @media (min-width: $md_device) {
+    font-size: 45px;
+  }
+  @media (min-width: $md_device) and (max-height: $sm_device) {
+    font-size: 35px;
+  }
+}
