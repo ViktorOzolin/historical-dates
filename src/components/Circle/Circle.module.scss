@@ -28,6 +28,7 @@ $circleSm: $circleMd * 0.8;
   z-index: 1;
   transform: rotate(120deg);
   display: none;
+  will-change: transform;
 
   @media (min-width: $sm_device) {
     max-width: $circleSm;
@@ -43,18 +44,13 @@ $circleSm: $circleMd * 0.8;
     max-height: $circleHeight;
   }
 
-  @media (min-width: $lg_device) and (max-height: 880px) {
+  @media (min-width: $md_device) and (max-height: 880px) {
     height: $circleSm;
     width: $circleSm;
   }
-  @media (max-width: $lg_device) and (max-height: 700px) {
+  @media (max-width: $lg_device) and (max-height: $sm_device) {
     display: none;
   }
-  //@media screen and (max-height: $sm_device) {
-  //    height: $circleSm;
-  //    width: $circleSm;
-  //}
-
 }
 
 .point {
@@ -67,6 +63,7 @@ $circleSm: $circleMd * 0.8;
   width: 56px;
   height: 56px;
   transform: rotate(-120deg);
+  will-change: transform;
 
   > div {
     border: 1px solid rgba(48, 62, 88, 0.5);
@@ -96,18 +93,6 @@ $circleSm: $circleMd * 0.8;
     transition: .6s;
     transform: scale(0.04);
     transform-origin: left;
-  }
-
-  &_active {
-
-    > div {
-      transform: scale(1);
-      background-color: $light;
-    }
-    > span {
-      opacity: 1;
-      transform: scale(1);
-    }
   }
 
   &:nth-child(1) {
@@ -167,13 +152,20 @@ $circleSm: $circleMd * 0.8;
   }
 }
 
+.active {
+  > div {
+    transform: scale(1);
+    background-color: $light;
+  }
+  > span {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .point:hover {
   > div {
     transform: scale(1);
     background-color: $light;
   }
-  //> span {
-  //  opacity: 1;
-  //  transform: scale(1);
-  //}
 }

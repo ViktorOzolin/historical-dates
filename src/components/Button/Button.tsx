@@ -13,17 +13,9 @@ interface ButtonProps {
     style?: React.CSSProperties;
 }
 
-const {
-    button,
-    button_disabled,
-    button_primary
-} = styles;
-
 export const Button:FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-
     const {
             primary,
-            children,
             disabled,
             isNext,
             onClick,
@@ -31,9 +23,9 @@ export const Button:FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>
     } = props;
 
     const buttonClassNames = cn({
-        [button]: true,
-        [button_primary]: primary,
-        [button_disabled]: disabled
+        [styles.button]: true,
+        [styles.primary]: primary,
+        [styles.disabled]: disabled
     });
 
     return (

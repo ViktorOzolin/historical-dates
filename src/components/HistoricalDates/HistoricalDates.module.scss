@@ -25,7 +25,7 @@
     justify-content: center;
     align-items: center;
 
-    &:before {
+    &::before {
       position: absolute;
       content: '';
       width: 1px;
@@ -34,7 +34,7 @@
       left: 50%;
       z-index: -1;
     }
-    &:after {
+    &::after {
       position: absolute;
       content: '';
       height: 1px;
@@ -45,11 +45,8 @@
     }
   }
   @media (min-width: $md_device) and (max-height: $sm_device) {
-    &:before, &:after {
+    &::before, &::after {
       display: none;
     }
-  }
-  @media (min-width: $lg_device) {
-
   }
 }

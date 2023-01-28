@@ -4,47 +4,51 @@
 .styledSwiper {
   height: 100%;
 
-
-  &_slide {
-    margin: 0 0 20px 0;
+  :global(.swiper-pagination-bullet-active) {
+    background-color: $dark;
   }
-  &_title {
-    color: $blue;
+}
+
+.slide {
+  margin: 0 0 20px 0;
+}
+
+.title {
+  color: $blue;
+  font-size: 16px;
+  font-family: 'Bebas Neue', cursive;
+
+  @media (min-width: $md_device) {
+    font-size: 25px;
+  }
+  @media (min-width: $lg_device) {
+    font-size: 20px;
+  }
+  @media (min-width: $md_device) and (max-height: $sm_device) {
+    font-size: 20px;
+  }
+}
+
+.text {
+  font-size: 14px;
+  line-height: 145%;
+  color: $dark;
+
+  @media (min-width: $md_device) {
     font-size: 16px;
-    font-family: 'Bebas Neue', cursive;
-
-    @media (min-width: $md_device) {
-      font-size: 25px;
-    }
-    @media (min-width: $lg_device) {
-      font-size: 20px;
-    }
-    @media (min-width: $md_device) and (max-height: $sm_device) {
-      font-size: 20px;
-    }
+    line-height: 25px;
   }
-
-  &_text {
-    font-size: 14px;
-    line-height: 145%;
-    color: $dark;
-
-    @media (min-width: $md_device) {
-      font-size: 16px;
-      line-height: 25px;
-    }
-    @media (min-width: $lg_device) {
-      font-size: 20px;
-      line-height: 30px;
-    }
-    @media (min-width: $lg_device) and (max-height: 800px) {
-      font-size: 18px;
-      line-height: 25px;
-    }
-    @media (min-width: $md_device) and (max-height: $sm_device) {
-      font-size: 15px;
-      line-height: 25px;
-    }
+  @media (min-width: $lg_device) {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  @media (min-width: $lg_device) and (max-height: 800px) {
+    font-size: 18px;
+    line-height: 25px;
+  }
+  @media (min-width: $md_device) and (max-height: $sm_device) {
+    font-size: 15px;
+    line-height: 25px;
   }
 }
 

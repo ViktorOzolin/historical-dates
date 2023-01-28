@@ -2,19 +2,10 @@ import React, {FC, useEffect, useRef} from 'react';
 import styles from './Period.module.scss';
 import gsap from 'gsap';
 
-
-
 interface PeriodProps {
     start: number;
     end: number;
 }
-
-const {
-    period,
-    period__start,
-    period__end,
-} = styles;
-
 
 export const Period:FC<PeriodProps> = ({start, end}) => {
     const startRef = useRef<HTMLSpanElement>(null);
@@ -33,13 +24,15 @@ export const Period:FC<PeriodProps> = ({start, end}) => {
               }
             }
         })
-        return () => {animation.kill()}
+        return () => {
+           gsap.killTweensOf(animation);
+        }
     },[start, end])
 
     return (
-        <div className={period}>
-            <span className={period__start} ref={startRef}>{start}</span>
-            <span className={period__end} ref={endRef}>{end}</span>
+        <div className={styles.period}>
+            <span className={styles.start} ref={startRef}>{start}</span>
+            <span className={styles.end} ref={endRef}>{end}</span>
         </div>
     );
 };

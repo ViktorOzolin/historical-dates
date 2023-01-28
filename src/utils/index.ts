@@ -1,7 +1,4 @@
-import {DataType, HistoricalDateKey, IPeriod, UniqueKeyValuesType} from '../@types/types';
-import React from "react";
-import gsap from "gsap";
-
+import {DataType, HistoricalDateKey, UniqueKeyValuesType} from '../@types/types';
 
 export function uniqueKeyValues(data: DataType, key: HistoricalDateKey): UniqueKeyValuesType  {
     const array = [];

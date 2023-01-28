@@ -1,29 +1,21 @@
 import React, {FC} from 'react';
 import styles from './Controls.module.scss';
 import {Button} from '../Button/Button';
-import {CurrentTypeStateType, UniqueKeyValuesType} from '../../@types/types';
+import {TypeOfDateType, UniqueKeyValuesType} from '../../@types/types';
 
 
 interface ControlsProps {
-    currentType: CurrentTypeStateType;
-    setCurrentType: (type: CurrentTypeStateType) => void;
+    currentType: TypeOfDateType;
+    onPointClickHandler: (type: TypeOfDateType) => void;
     dateTypes: UniqueKeyValuesType;
 }
 
-const {
-    controls,
-    btn_group,
-    counter
-} = styles;
-
 export const Controls:FC<ControlsProps> = ({
         currentType,
-        setCurrentType,
+        onPointClickHandler,
         dateTypes
 }) => {
-
     const currentIndex = dateTypes.indexOf(currentType);
-
 
     const counterDecrementHandler = () => {
         let type;
@@ -32,7 +24,7 @@ export const Controls:FC<ControlsProps> = ({
         } else {
             type = dateTypes[currentIndex - 1];
         }
-        setCurrentType(type);
+        onPointClickHandler(type);
     }
     const counterIncrementHandler = () => {
         let type;
@@ -41,14 +33,13 @@ export const Controls:FC<ControlsProps> = ({
         } else {
             type = dateTypes[currentIndex + 1];
         }
-        setCurrentType(type);
+        onPointClickHandler(type);
     }
 
-
     return (
-        <div className={controls}>
-            <span className={counter}>0{currentIndex + 1}/0{dateTypes.length}</span>
-            <div className={btn_group}>
+        <div className={styles.controls}>
+            <span className={styles.counter}>0{currentIndex + 1}/0{dateTypes.length}</span>
+            <div className={styles.btn_group}>
                 <Button
                     onClick={counterDecrementHandler}
                     disabled={currentIndex === 0}

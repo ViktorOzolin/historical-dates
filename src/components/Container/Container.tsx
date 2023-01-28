@@ -6,11 +6,9 @@ interface ContainerProps {
     style?: React.CSSProperties,
 }
 
-const {container} = styles;
-
 export const Container:FC<ContainerProps> = ({children, style}) => {
     return (
-        <div className={container} style={style}>
+        <div className={styles.container} style={style}>
             {children}
         </div>
     );

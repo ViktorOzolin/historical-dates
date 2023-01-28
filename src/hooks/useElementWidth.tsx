@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 
 type UseElementWidthType = null | number;
 
-type UseElementReturnType<T> = [React.Ref<T>, UseElementWidthType];
+type UseElementReturnType<T> = [React.RefObject<T>, UseElementWidthType];
 
 export function useElementWidth<T extends HTMLElement & HTMLDivElement>(): UseElementReturnType<T> {
     const [width, setWidth] = useState<UseElementWidthType>(null);
@@ -28,4 +28,4 @@ export function useElementWidth<T extends HTMLElement & HTMLDivElement>(): UseEl
     },[ref]);
 
     return [ref, width];
-};
+}

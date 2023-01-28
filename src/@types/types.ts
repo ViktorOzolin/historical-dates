@@ -11,7 +11,7 @@ export type HistoricalDateKey = 'id' | 'type' | 'year' | 'description';
 
 export type UniqueKeyValuesType = Array<string | number>;
 
-export type CurrentTypeStateType = string | number;
+export type TypeOfDateType = string | number;
 
 export interface IPeriod {
     prev: number;

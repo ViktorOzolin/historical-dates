@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore ,{Navigation, Pagination} from 'swiper';
 import styles from './Slider.module.scss';
@@ -8,27 +8,19 @@ import 'swiper/css/navigation';
 import {DataType} from '../../@types/types';
 import {Button} from '../Button/Button';
 import {useElementWidth} from '../../hooks/useElementWidth';
-
-const {
-    styledSwiper,
-    wrapper,
-    styledSwiper_slide,
-    styledSwiper_title,
-    styledSwiper_text
-} = styles;
+import gsap from 'gsap';
 
 const mobileWidth = 768;
 
 interface SliderProps {
     items: DataType;
+    isLoading: boolean;
 }
 
-export const Slider:FC<SliderProps> = ({items}) => {
-
+export const Slider:FC<SliderProps> = ({items,isLoading}) => {
     const navigationPrevRef = React.useRef<HTMLButtonElement>(null);
     const navigationNextRef = React.useRef<HTMLButtonElement>(null);
     const [observableRef, observableWidth] = useElementWidth();
-
     const [reachBeginning, setReachBeginning] = useState<boolean>(false);
     const [reachEnd, setReachEnd] = useState<boolean>(false);
 
@@ -43,9 +35,22 @@ export const Slider:FC<SliderProps> = ({items}) => {
         nextEl: navigationNextRef.current,
     });
 
+    useEffect(() => {
+        if (isLoading) {
+            gsap.to(observableRef.current, 0, {
+                opacity: '0',
+                ease: 'power2.out',
+            });
+        } else {
+            gsap.to(observableRef.current, 0.7, {
+                opacity: '1',
+                ease: 'power2.out',
+            });
+        }
+    },[isLoading, observableRef]);
 
     return (
-        <div className={wrapper} ref={observableRef}>
+        <div className={styles.wrapper} ref={observableRef}>
             <Swiper
                 slidesPerView={isMobile ? 2 : 3}
                 spaceBetween={10}
@@ -54,6 +59,8 @@ export const Slider:FC<SliderProps> = ({items}) => {
                 loopFillGroupWithBlank={true}
                 navigation={navigationsOptions}
                 pagination={true}
+                noSwiping={isLoading}
+                noSwipingClass={'swiper-slide'}
                 onSlideChange={(swiper: SwiperCore): void => {
                     const {isEnd, isBeginning} = swiper;
                     toggleButtonsState(isBeginning, isEnd);
@@ -63,12 +70,12 @@ export const Slider:FC<SliderProps> = ({items}) => {
                     toggleButtonsState(isBeginning, isEnd);
                 }}
                 modules={[Navigation, Pagination]}
-                className={styledSwiper}
+                className={styles.styledSwiper}
             >
                 {items.map(item =>
-                    <SwiperSlide className={styledSwiper_slide} key={item.id}>
-                        <span className={styledSwiper_title}>{item.year}</span>
-                        <p className={styledSwiper_text}>{item.description}</p>
+                    <SwiperSlide className={styles.slide} key={item.id}>
+                        <span className={styles.title}>{item.year}</span>
+                        <p className={styles.text}>{item.description}</p>
                     </SwiperSlide>
                 )}
             </Swiper>

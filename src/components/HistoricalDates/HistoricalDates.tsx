@@ -2,7 +2,7 @@ import React, {FC, useEffect, useMemo, useState} from 'react';
 import styles from './HistoricalDates.module.scss';
 import {Slider} from '../Slider/Slider';
 import {Circle} from '../Circle/Circle';
-import {CurrentTypeStateType, DataType, UniqueKeyValuesType} from '../../@types/types';
+import {TypeOfDateType, DataType, UniqueKeyValuesType} from '../../@types/types';
 import {uniqueKeyValues} from '../../utils';
 import {Title} from '../Title/Title';
 
@@ -16,7 +16,8 @@ const {
 
 export const HistoricalDates:FC<HistoricalDatesProps> = ({data}) => {
     const [dateTypes, setDateTypes] = useState<UniqueKeyValuesType>([])
-    const [currentType, setCurrentType] = useState<CurrentTypeStateType>('');
+    const [currentType, setCurrentType] = useState<TypeOfDateType>('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const currentDates = useMemo(() => {
         return data.filter(date => date.type === currentType);
@@ -43,9 +44,10 @@ export const HistoricalDates:FC<HistoricalDatesProps> = ({data}) => {
                     setCurrentType={(type) => {
                         setCurrentType(type)
                     }}
+                    setIsLoading={setIsLoading}
                     currentType={currentType}
                 />
-                <Slider items={currentDates} />
+                <Slider items={currentDates} isLoading={isLoading}/>
             </div>
     );
 };
